@@ -15,19 +15,25 @@ var index = function (el) {
   return new ClassList(el);
 };
 
+//////////// Replaced ClassList with more clear debugging
 /**
  * Initialize a new ClassList for the given element
  *
  * @param {Element} el DOM Element
  */
 function ClassList(el) {
-  if (!el || el.nodeType !== 1) {
-    throw new Error('A DOM Element reference is required');
+  if (!el) {
+    throw new Error('The element passed to ClassList was undefined');
+  }
+
+  if (el.nodeType !== 1) {
+    throw new Error('Element ' + el.nodeName + ' is wrong nodeType: ' + el.nodeType);
   }
 
   this.el = el;
   this.classList = el.classList;
 }
+/////////////////////////// End Replacements
 
 /**
  * Check token validity
